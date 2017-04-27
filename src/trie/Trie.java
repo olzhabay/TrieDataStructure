@@ -18,7 +18,6 @@ public class Trie {
     }
 
     boolean add(ItemSet itemSet) {
-        /** COMPLETE **/
         TrieNode node = rootNode;
         for (Integer item: itemSet) {
             if (!node.containsKey(item)) {
@@ -36,12 +35,12 @@ public class Trie {
     }
 
     boolean contains(ItemSet itemSet) {
-        /** COMPLETE **/
         TrieNode node = rootNode;
         for (Integer item: itemSet) {
             if (!node.containsKey(item)) {
                 return false;
             }
+            node = node.get(item);
         }
 		return true;
     }
@@ -51,10 +50,8 @@ public class Trie {
     }
 
     public void findItemSets(ArrayList<ItemSet> matchedItemSet, TrieNode node, ArrayList<Integer> transaction, int index) {
-        /** COMPLETE **/
         if (node.isLeafNode()) {
             matchedItemSet.add(node.getItemSet());
-            return;
         }
         for (int i = index; i < transaction.size(); i++) {
             if (node.containsKey(transaction.get(i))) {
